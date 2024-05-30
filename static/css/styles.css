@@ -1,0 +1,88 @@
+/* styles.css */
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Form styling */
+.form-label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Page title styling */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+    margin-bottom: 10px;
+}
+
+/* Link styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.card {
+    width: 500px;
+}
+
+/* Default color for the buttons */
+.btn-outline-info {
+    color: #0dcaf0; /* Black text color */
+    background-color: #f8f9fa; /* Light color */
+    border-color: #f8f9fa; /* Light color */
+}
+
+/* Fill color when the button is checked */
+.btn-check:checked + .btn-outline-light,
+.btn-check:checked + .btn-outline-light:focus,
+.btn-check:checked + .btn-outline-light:hover {
+    color: #fff; /* White text color */
+    background-color: #007bff; /* Bootstrap's primary color */
+    border-color: #007bff; /* Bootstrap's primary color */
+}
+

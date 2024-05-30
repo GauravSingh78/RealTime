@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verilog Code Generation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+    <!-- Sweet Alert 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        // Define the showSuccessMessage function
+        function showSuccessMessage() {
+            swal("Success!", "File uploaded successfully and rules extracted.", "success").then((value) => {
+                
+                window.location.href = "/verilog_generation";
+            });
+        }
+        function showFileNotFoundMessage() {
+            swal("Error!", "File Not Found", "error").then((value) => {
+                
+                window.location.href = "/verilog_generation";
+            });
+        }
+        function showFileNotSelectedMessage() {
+            swal("Error!", "File Not Selected", "error").then((value) => {
+                // Redirect or perform any other action after the success message
+                window.location.href = "/verilog_generation";
+            });
+        }
+    </script>-->
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-3">
+            <div class="card-body">
+                <h1 class="header text-center" style="white-space: nowrap; color: #17a2b8;">Verilog Code Generation</h1>
+                <hr style="height: 5px; background-color: #17a2b8; border: none;">
+
+                <!-- First Form for Extract Features Button -->
+                <form id="feature_extraction_form" action="/FeatureExtraction" method="POST" enctype="multipart/form-data">
+                    <div class="d-grid gap-2">
+                        <label for="pickle_file" class="form-label">Select pickle file:</label>
+                        <input type="file" id="pickle_file" name="pickle_file" class="form-control mb-3">
+                        <button type="submit" class="btn btn-primary" name="extract_features">Extract Features</button>
+                    </div>
+                </form>
+
+                <!-- Second Form for Generate Verilog Code Button -->
+                <form action="/RuleGeneration" id="rule_generation_form" method="POST" enctype="multipart/form-data">
+                    <div class="d-grid gap-2">
+                        <label for="input_file" class="form-label">Select input file:</label>
+                        <input type="file" id="input_file" name="input_file" class="form-control mb-3">
+                        <button type="submit" class="btn btn-primary">Generate Verilog Code</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button onclick="history.back()" class="btn btn-secondary">&larr; Go Back</button>
+                <a href="{{ url_for('home') }}" class="btn btn-secondary ">Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("feature_extraction_form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                var fileInput = document.getElementById("input_file"); // Assuming your file input field has the id "file_input"
+        
+        // Check if the file input is empty
+                
+
+                // Check if the file exists
+                var file = fileInput.files[0];
+                if (!fileInput) {
+                    showFileNotFoundMessage();
+                    return;
+                }
+
+                
+                showSuccessMessage();
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("rule_generation_form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                showSuccessMessage(); // Call the showSuccessMessage function
+            });
+        });
+    </script>-->
+</body>
+</html>

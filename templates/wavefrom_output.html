@@ -1,0 +1,171 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform Output</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #waveform-plot {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Waveform Output</h1>
+        <div id="waveform-plot">
+            
+            <img src="data:image/png;base64,{{ plot_base64 }}" alt="Waveform Plot">
+        </div>
+        <p>Prediction result: {{ prediction_result }}</p>
+    </div>
+</body>
+</html>
+-->
+
+
+
+<!--
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform Output</title>
+   
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+</head>
+<body>
+    <div id="plot"></div>
+    <div style="text-align: center;">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Home</a>
+    </div>
+    
+    
+    <script>
+        // JavaScript code to plot the waveform using Plotly.js
+        var time = {{ time|tojson }};
+        var vinn_actual = {{ vinn_actual|tojson }};
+        var vinn_predicted = {{vinn_predicted }};
+        console.log(vinn_actual)
+        var trace1 = {
+            
+            y: vinn_actual,
+            mode: 'lines',
+            name: 'Actual',
+            line: {
+                color: 'blue'
+            }
+        };
+        
+        var trace2 = {
+            
+            y: vinn_predicted,
+            mode: 'lines',
+            name: 'Predicted',
+            line: {
+                color: 'red'
+            }
+        };
+        
+        var layout = {
+            title: 'Real-time Waveform Plot',
+            xaxis: { title: 'Time' },
+            yaxis: { title: 'Voltage' }
+        };
+        
+        Plotly.newPlot('plot', [trace1, trace2], layout);
+    </script>
+</body>
+</html>  
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform Output</title>
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+</head>
+<body>
+    <div id="plot"></div>
+    <div style="text-align: center;">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Home</a>
+    </div>
+    
+
+    <script>
+       
+        var vinn_actual = {{ vinn_actual|tojson }};
+        var vinn_predicted = {{ vinn_predicted|tojson }};
+        
+        var layout = {
+            title: 'Real-time Waveform Plot',
+            xaxis: { title: 'Time' },
+            yaxis: { title: 'Voltage' }
+        };
+
+        var plot = document.getElementById('plot');
+        Plotly.newPlot(plot, [
+            {   
+                y: [],
+                mode: 'lines',
+                name: 'Actual',
+                line: { color: 'blue' }
+            },
+            {               
+                y: [],
+                mode: 'lines',
+                name: 'Predicted',
+                line: { color: 'red' }
+            }
+        ], layout);
+
+        
+        function updatePlot(actual, predicted) {
+            Plotly.extendTraces(plot, {                
+                y: [[vinn_predicted[predicted]]]
+            }, [1]); 
+            Plotly.extendTraces(plot, {                
+                y: [[vinn_actual[actual]]]
+            }, [0]); 
+
+        }
+
+        
+        var index = 0;
+        var interval = setInterval(function() {
+            if (index >= vinn_actual.length || index >= vinn_predicted.length) {
+                clearInterval(interval); 
+                return;
+            }
+
+            updatePlot(index, index);
+            index++;
+        }, 10);
+    </script>
+</body>
+</html>

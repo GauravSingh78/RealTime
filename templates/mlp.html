@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-3">
+            <div class="card-body">
+                <h1 class="header text-center" style="white-space: nowrap; color: #17a2b8;">Multi-Layer Perceptron</h1> 
+                <hr style="height: 5px; background-color: #17a2b8; border: none;">
+                <form action="" method="POST">
+                    <div class="d-grid gap-2">
+                        
+                        <input type="radio" name="option" value="encode_file" class="btn-check" id="encode_file">
+                        <label class="btn btn-outline-info" for="encode_file">Encode Test File</label><br>
+                        
+                        <input type="radio" name="option" value="predict_library" class="btn-check" id="predict_library">
+                        <label class="btn btn-outline-info" for="predict_library">Predict using Library</label><br>
+                        
+                        <input type="radio" name="option" value="manual_prediction" class="btn-check" id="manual_prediction">
+                        <label class="btn btn-outline-info" for="manual_prediction">Manual Prediction</label><br>
+                        
+                        <input type="radio" name="option" value="generate_weight" class="btn-check" id="generate_weight">
+                        <label class="btn btn-outline-info" for="generate_weight">Weight Generation</label><br>
+                        
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <a href="javascript:history.back()" class="btn btn-secondary">&larr; Back</a>
+                <a href="{{ url_for('home') }}" class="btn btn-secondary">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

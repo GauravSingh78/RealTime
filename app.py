@@ -89,7 +89,7 @@ def feature_extraction():
                 extract_and_save_rules(pickle_file_path)
 
 
-                message ="Rule generated Successfully and Saved in RulesFolder... "
+                message ="If-Else Rule generated Successfully ... "
                 return render_template('success.html', message=message)
             except Exception as e:
                 return f'An error occurred: {str(e)}'
@@ -134,7 +134,7 @@ def rule_generation():
             generate_and_save_verilog(text_file_path, output_folder)
 
             
-            message ="Verilog Code Generated Successfully saved in VerilogCodeFolder..."
+            message ="Verilog Code Generated Successfully ..."
             return render_template('success.html', message=message)
 
     return render_template('verilog.html')

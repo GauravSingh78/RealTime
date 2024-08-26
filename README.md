@@ -4,10 +4,10 @@ Welcome to the Random Forest and Multi-Layer Perceptron (MLP) model application!
 The Random Forest model section provides four main functionalities:
 ![image](https://github.com/user-attachments/assets/73303eeb-87b8-4b60-980e-24ae66f07d92)
 
-####Predict Using Library
-####Manual Prediction
-####Verilog Code Generation
-####State-wise Prediction
+#### Predict Using Library
+#### Manual Prediction
+#### Verilog Code Generation
+#### State-wise Prediction
 ## 1. Predict Using Library
 ![image](https://github.com/user-attachments/assets/a20c3647-bbfa-446e-b860-78a5d65c6dad)
 
